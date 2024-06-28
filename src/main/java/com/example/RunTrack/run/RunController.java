@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @Description ResrController class that handles request mapping
+ * @Description RestController class that handles request mapping
  */
 @RestController
 @RequestMapping("/api/runs")    //All mapping methods in class suffix "/api/runs"

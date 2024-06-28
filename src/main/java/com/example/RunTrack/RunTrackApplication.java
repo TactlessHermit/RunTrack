@@ -25,13 +25,13 @@ public class RunTrackApplication {
 	}
 
 
-	@Bean
-	CommandLineRunner runner(RunRepository runRepository){
-		log.info("CP1");
-		return args -> {
-			Run run = new Run(10001, "Monday Test Run", LocalDateTime.now(), LocalDateTime.now(), 2, Location.OUTDOOR);
-			runRepository.create(run);
-		};
-	}
+//	@Bean
+//	CommandLineRunner runner(RunRepository runRepository){
+//		log.info("CP1");
+//		return args -> {
+//			Run run = new Run(10001, "Monday Test Run", LocalDateTime.now(), LocalDateTime.now(), 2, Location.OUTDOOR);
+//			runRepository.create(run);
+//		};
+//	}
 
 }
