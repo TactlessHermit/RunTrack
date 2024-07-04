@@ -1,3 +1,8 @@
+#PREREQUISITE: Docker Compose Dependency
+#Provides the data necessary to set up a Docker Postgres container.
+#Spring can also read the JDBC connection details from this file. So no need to
+#populate prop file
+
 services:
   postgres:
     image: 'postgres:latest'

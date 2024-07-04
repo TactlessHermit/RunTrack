@@ -26,9 +26,8 @@ public class RunController {
         return "HOME 4 RUNZ";
     }
 
-
+    //RunRepository Dependency Injection
     public RunController(RunRepository runRepository){
-        log.info("CP2");
         this.runRepository = runRepository;
     }
 
@@ -36,19 +35,19 @@ public class RunController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     void create(@Valid @RequestBody Run run){  //Gets run data from request body
-        runRepository.create(run);
+        runRepository.save(run);
     }
 
     @PutMapping("")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void update(@Valid @RequestBody Run run){
-        runRepository.update(run, run.id());
+        runRepository.save(run);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void delete(@PathVariable int id){
-        runRepository.delete(id);
+        runRepository.delete(runRepository.findById(id).get());
     }
 
     @GetMapping
@@ -65,5 +64,10 @@ public class RunController {
             throw new ResponseStatusException(HttpStatusCode.valueOf(404));
         }
         return run.get();
+    }
+
+    @GetMapping("/location/{location}")
+    List<Run> findByLocation(@PathVariable String location){
+        return runRepository.findAllByLocation(location);
     }
 }
